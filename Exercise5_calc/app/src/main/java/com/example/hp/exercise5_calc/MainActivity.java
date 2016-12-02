@@ -115,12 +115,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 op=4;
                 break;
             case R.id.btnequall:
+                equall();
                 break;
             case R.id.btnpoint:
                 addpoint();
                 break;
         }
 
+    }
+    private void equall()
+    {
+        Isfloat = false;
+        switch (op)
+        {
+            case 1 :
+                TVnumber.setText(String.valueOf( plus(firstnumber,TVnumber.getText().toString())));
+                break;
+        }
     }
 
     private void config_for_second_number()
@@ -137,8 +148,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             String currentValue = TVnumber.getText().toString();
             if (!currentValue.equals("0"))
                 TVnumber.append(inp);
+            else if (currentValue.equals("0") && inp.equals("."))
+                TVnumber.setText("0.");
             else
                 TVnumber.setText(inp);
+
         }
     }
     private void addpoint()
