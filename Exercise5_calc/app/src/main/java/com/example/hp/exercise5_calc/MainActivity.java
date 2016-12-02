@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btnPoint,btnAdd,btnMinus,btnDivide,btnMul,btnEquall;
     TextView TVnumber;
     boolean Isfloat;
-    String number;
+    String firstnumber;
     int op;
 
 
@@ -99,15 +99,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 setinput("9");
                 break;
             case R.id.btnadd:
+                config_for_second_number();
                 op=1;
                 break;
             case R.id.btnminus:
+                config_for_second_number();
                 op=2;
                 break;
             case R.id.btnmul:
+                config_for_second_number();
                 op=3;
                 break;
             case R.id.btndivide:
+                config_for_second_number();
                 op=4;
                 break;
             case R.id.btnequall:
@@ -119,9 +123,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    private void setinput(String inp)
+    private void config_for_second_number()
     {
-        TVnumber.append(inp);
+        Isfloat=false;
+        firstnumber = TVnumber.getText().toString();
+        setinput("");
+    }
+    private void setinput(String inp) {
+        if (inp.equals(""))
+            TVnumber.setText("0");
+        else
+        {
+            String currentValue = TVnumber.getText().toString();
+            if (!currentValue.equals("0"))
+                TVnumber.append(inp);
+            else
+                TVnumber.setText(inp);
+        }
     }
     private void addpoint()
     {
