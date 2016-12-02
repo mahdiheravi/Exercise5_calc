@@ -131,6 +131,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case 1 :
                 TVnumber.setText(String.valueOf( plus(firstnumber,TVnumber.getText().toString())));
                 break;
+            case 2 :
+                TVnumber.setText(String.valueOf( minus(firstnumber,TVnumber.getText().toString())));
+                break;
+            case 3 :
+                TVnumber.setText(String.valueOf( mul(firstnumber,TVnumber.getText().toString())));
+                break;
+            case 4 :
+                TVnumber.setText(String.valueOf( divide(firstnumber,TVnumber.getText().toString())));
+                break;
         }
     }
 
