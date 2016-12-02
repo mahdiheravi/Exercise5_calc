@@ -5,10 +5,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     Button btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btnPoint,btnAdd,btnMinus,btnDivide,btnMul,btnEquall;
+    TextView TVnumber;
+    boolean Isfloat;
+    String number;
+    int op;
 
 
 
@@ -16,6 +21,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        configElements();
     }
     private void configElements()
     {
@@ -35,12 +41,111 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnDivide = (Button) findViewById(R.id.btndivide);
         btnMul = (Button) findViewById(R.id.btnmul);
         btnEquall = (Button) findViewById(R.id.btnequall);
+        TVnumber = (TextView) findViewById(R.id.TVnumber);
+
+        btn0.setOnClickListener(this);
+        btn1.setOnClickListener(this);
+        btn2.setOnClickListener(this);
+        btn3.setOnClickListener(this);
+        btn4.setOnClickListener(this);
+        btn5.setOnClickListener(this);
+        btn6.setOnClickListener(this);
+        btn7.setOnClickListener(this);
+        btn8.setOnClickListener(this);
+        btn9.setOnClickListener(this);
+        btnPoint.setOnClickListener(this);
+        btnAdd.setOnClickListener(this);
+        btnMinus.setOnClickListener(this);
+        btnDivide.setOnClickListener(this);
+        btnMul.setOnClickListener(this);
+        btnEquall.setOnClickListener(this);
+
+
 
     }
 
     @Override
     public void onClick(View v) {
+        switch (v.getId())
+        {
+            case R.id.btn0 :
+                setinput("0");
+                break;
+            case R.id.btn1:
+                setinput("1");
+                break;
+            case R.id.btn2:
+                setinput("2");
+                break;
+            case R.id.btn3:
+                setinput("3");
+                break;
+            case R.id.btn4:
+                setinput("4");
+                break;
+            case R.id.btn5:
+                setinput("5");
+                break;
+            case R.id.btn6:
+                setinput("6");
+                break;
+            case R.id.btn7:
+                setinput("7");
+                break;
+            case R.id.btn8:
+                setinput("8");
+                break;
+            case R.id.btn9:
+                setinput("9");
+                break;
+            case R.id.btnadd:
+                op=1;
+                break;
+            case R.id.btnminus:
+                op=2;
+                break;
+            case R.id.btnmul:
+                op=3;
+                break;
+            case R.id.btndivide:
+                op=4;
+                break;
+            case R.id.btnequall:
+                break;
+            case R.id.btnpoint:
+                addpoint();
+                break;
+        }
 
+    }
+
+    private void setinput(String inp)
+    {
+        TVnumber.append(inp);
+    }
+    private void addpoint()
+    {
+        if (!Isfloat)
+        {
+            Isfloat=true;
+            setinput(".");
+        }
+    }
+    private double plus(String num1,String num2)
+    {
+        return (Double.parseDouble(num1)+Double.parseDouble(num2));
+    }
+    private double minus(String num1,String num2)
+    {
+        return (Double.parseDouble(num1)-Double.parseDouble(num2));
+    }
+    private double mul(String num1,String num2)
+    {
+        return (Double.parseDouble(num1)*Double.parseDouble(num2));
+    }
+    private double divide(String num1,String num2)
+    {
+        return (Double.parseDouble(num1)/Double.parseDouble(num2));
     }
 
 
